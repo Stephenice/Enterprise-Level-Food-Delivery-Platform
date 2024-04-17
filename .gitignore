@@ -8,6 +8,8 @@ pnpm-debug.log*
 lerna-debug.log*
 
 backend/node_modules
+frontend/node_modules
+backend/.env
 dist
 dist-ssr
 *.local
@@ -22,3 +24,18 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+
+# frontend
+frontend/dist
+frontend/dist-ssr
+frontend/*.local
+frontend/.gitignore
+
+
+# backend
+backend/dist
+backend/dist-ssr
+backend/*.local
+backend/.gitignore
