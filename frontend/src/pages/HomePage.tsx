@@ -1,3 +1,6 @@
+import landingImage from "../assets/landing.png";
+import appDownloadImage from "../assets/appDownload.png";
+
 
 export default function HomePage() {
   return (
@@ -7,9 +10,22 @@ export default function HomePage() {
           Tuck into a takeway today
         </h1>
         <span className="text-xl">Food is just a click away!</span>
-
-
       </div>
+
+      <div className="grid md:grid-cols-2 gap-5">
+        <img src={landingImage} />
+        <div className="flex flex-col items-center justify-center gap-4 text-center">
+          <span className="font-bold text-3xl tracking-tighter">
+            Order takeaway even faster!
+          </span>
+          <span>
+            Download the EatNow App for more faster ordering and personalised
+            recommendations
+          </span>
+          <img src={appDownloadImage} />
+        </div>
+      </div>
+
     </div>
   )
 }

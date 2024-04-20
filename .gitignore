@@ -32,6 +32,8 @@ frontend/dist
 frontend/dist-ssr
 frontend/*.local
 frontend/.gitignore
+frontend/.env
+
 
 
 # backend
