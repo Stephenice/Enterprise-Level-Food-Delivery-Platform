@@ -10,10 +10,8 @@ import { Link } from "react-router-dom";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 
-
 const UsernameMenu = () => {
-    const { user, logout } = useAuth0();
-
+  const { user, logout } = useAuth0();
 
   return (
     <DropdownMenu>
@@ -39,13 +37,14 @@ const UsernameMenu = () => {
         <DropdownMenuItem>
           <Button
             onClick={() => logout()}
-            className="flex flex-1 font-bold bg-orange-500">
+            className="flex flex-1 font-bold bg-orange-500"
+          >
             Log Out
           </Button>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
-}
+};
 
-export default UsernameMenu
+export default UsernameMenu;

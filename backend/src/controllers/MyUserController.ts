@@ -1,15 +1,6 @@
 import { Request, Response } from "express";
 import User from "../models/user";
 
-
-/**
- * Retrieves the current user based on the provided user ID in the request.
- * @async
- * @param {Request} req - The request object containing the ID of the current user.
- * @param {Response} res - The response object to send back the result.
- * @returns {Promise<void>} A promise that resolves once the operation is completed.
- * @throws {Error} If there is an error during user retrieval.
- */
 const getCurrentUser = async (req: Request, res: Response) => {
   try {
     const currentUser = await User.findOne({ _id: req.userId });
@@ -24,16 +15,6 @@ const getCurrentUser = async (req: Request, res: Response) => {
   }
 };
 
-
-
-/**
- * Creates a new user or updates an existing user based on the provided request data.
- * @async
- * @param {Request} req - The request object containing user data.
- * @param {Response} res - The response object to send back the result.
- * @returns {Promise<void>} A promise that resolves once the operation is completed.
- * @throws {Error} If there is an error during user creation or retrieval.
- */
 const createCurrentUser = async (req: Request, res: Response) => {
   try {
     const { auth0Id } = req.body;
@@ -52,15 +33,6 @@ const createCurrentUser = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Error creating user" });
   }
 };
-
-
-/**
- * Updates the current user's information based on the provided request data.
- * @param req - The request object containing user data and the ID of the current user.
- * @param res - The response object to send back the result.
- * @returns A Promise<void> representing the asynchronous operation completion.
- * @throws If there is an error during user retrieval or updating.
- */
 
 const updateCurrentUser = async (req: Request, res: Response) => {
   try {

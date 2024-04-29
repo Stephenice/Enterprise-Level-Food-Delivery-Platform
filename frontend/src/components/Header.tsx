@@ -1,25 +1,30 @@
 import { Link } from "react-router-dom";
 import MobileNav from "./MobileNav";
 import MainNav from "./MainNav";
+import logo from "../assets/images.png";
+// import './Header.css';
 
 
-export default function Header() {
+const Header = () => {
   return (
     <div className="border-b-2 border-b-orange-500 py-6">
       <div className="container mx-auto flex justify-between items-center">
-        <Link to="/" className="text-3xl font-bold tracking-tight text-orange-500">
-        EatNow
+        <Link
+          to="/"
+          className="text-3xl font-bold tracking-tight text-orange-500 flex px-4 py-2 items-center"
+        >
+          <img src={logo} alt="logo" className="w-24 h-auto"/>
+          EatNow.com
         </Link>
-
         <div className="md:hidden">
-        <MobileNav/>
+          <MobileNav />
         </div>
-
         <div className="hidden md:block">
-        <MainNav/>
+          <MainNav />
         </div>
-
       </div>
     </div>
-  )
-}
+  );
+};
+
+export default Header;
