@@ -5,9 +5,19 @@ import { toast } from "sonner";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
+/**
+ * useGetMyRestaurant hook fetches the current user's restaurant data.
+ * It sends a GET request to the API endpoint '/api/my/restaurant' with the user's access token.
+ * 
+ * @returns {Object} - An object containing the fetched restaurant data and loading state.
+ */
 export const useGetMyRestaurant = () => {
   const { getAccessTokenSilently } = useAuth0();
 
+  /**
+   * Function to send a GET request to fetch the current user's restaurant data.
+   * @returns {Promise<Restaurant>} - A promise that resolves to the fetched restaurant data.
+   */
   const getMyRestaurantRequest = async (): Promise<Restaurant> => {
     const accessToken = await getAccessTokenSilently();
 
@@ -32,6 +42,13 @@ export const useGetMyRestaurant = () => {
   return { restaurant, isLoading };
 };
 
+
+/**
+ * useCreateMyRestaurant hook creates a new restaurant for the current user.
+ * It sends a POST request to the API endpoint '/api/my/restaurant' with the user's access token and restaurant data.
+ * 
+ * @returns {Object} - An object containing the function to create a restaurant, loading state, success state, and error state.
+ */
 export const useCreateMyRestaurant = () => {
   const { getAccessTokenSilently } = useAuth0();
 
@@ -73,6 +90,13 @@ export const useCreateMyRestaurant = () => {
   return { createRestaurant, isLoading };
 };
 
+
+/**
+ * useUpdateMyRestaurant hook updates the current user's restaurant data.
+ * It sends a PUT request to the API endpoint '/api/my/restaurant' with the user's access token and updated restaurant data.
+ * 
+ * @returns {Object} - An object containing the function to update restaurant data, loading state, and error state.
+ */
 export const useUpdateMyRestaurant = () => {
   const { getAccessTokenSilently } = useAuth0();
 
@@ -114,6 +138,13 @@ export const useUpdateMyRestaurant = () => {
   return { updateRestaurant, isLoading };
 };
 
+
+/**
+ * useGetMyRestaurantOrders hook fetches the current user's restaurant orders.
+ * It sends a GET request to the API endpoint '/api/my/restaurant/order' with the user's access token.
+ * 
+ * @returns {Object} - An object containing the fetched orders data and loading state.
+ */
 export const useGetMyRestaurantOrders = () => {
   const { getAccessTokenSilently } = useAuth0();
 
@@ -147,9 +178,22 @@ type UpdateOrderStatusRequest = {
   status: string;
 };
 
+
+/**
+ * useUpdateMyRestaurantOrder hook updates the status of a restaurant order.
+ * It sends a PATCH request to the API endpoint '/api/my/restaurant/order/:orderId/status' with the user's access token
+ * and the order ID and new status to be updated.
+ * 
+ * @returns {Object} - An object containing the function to update order status, loading state, error state, and success state.
+ */
 export const useUpdateMyRestaurantOrder = () => {
   const { getAccessTokenSilently } = useAuth0();
 
+  /**
+   * Function to send a PATCH request to update order status.
+   * @param {UpdateOrderStatusRequest} updateStatusOrderRequest - Object containing order ID and new status.
+   * @returns {Promise<Order>} - A promise that resolves to the updated order data.
+   */
   const updateMyRestaurantOrder = async (
     updateStatusOrderRequest: UpdateOrderStatusRequest
   ) => {
