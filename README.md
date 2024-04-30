@@ -27,7 +27,7 @@ Welcome to our enterprise-level food ordering system! This project aims to provi
 1. Clone the repository:
 
 ```
-git clone https://github.com/Stephenice/AI_Articles_Summarize.git
+git clone https://github.com/Stephenice/Enterprise-Level-Food-Delivery-Platform.git
 ```
 
 2. Install dependencies:
