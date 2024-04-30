@@ -47,7 +47,7 @@ npm install
 npm run dev
 ```
 
-5. Visit `http://localhost:3000` in your browser to view the application.
+5. Visit `http://localhost:5173` in your browser to view the application.
 
 ## Contribution Guidelines
 
