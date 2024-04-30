@@ -18,17 +18,28 @@ export type CartItem = {
   quantity: number;
 };
 
+/**
+ * DetailPage component represents the page displaying details of a restaurant.
+ * It retrieves restaurant details and menu items based on the restaurantId parameter
+ * from the URL using React Router's useParams hook. It also handles adding items to
+ * the cart, removing items from the cart, and initiating the checkout process.
+ * 
+ * @returns {JSX.Element} JSX representing the detail page of a restaurant.
+ */
+
 const DetailPage = () => {
   const { restaurantId } = useParams();
   const { restaurant, isLoading } = useGetRestaurant(restaurantId);
   const { createCheckoutSession, isLoading: isCheckoutLoading } =
     useCreateCheckoutSession();
 
+  // Initialize cart items using session storage or an empty array
   const [cartItems, setCartItems] = useState<CartItem[]>(() => {
     const storedCartItems = sessionStorage.getItem(`cartItems-${restaurantId}`);
     return storedCartItems ? JSON.parse(storedCartItems) : [];
   });
 
+  // Add item to the cart
   const addToCart = (menuItem: MenuItemType) => {
     setCartItems((prevCartItems) => {
       const existingCartItem = prevCartItems.find(
@@ -64,6 +75,7 @@ const DetailPage = () => {
     });
   };
 
+  // Remove item from the cart
   const removeFromCart = (cartItem: CartItem) => {
     setCartItems((prevCartItems) => {
       const updatedCartItems = prevCartItems.filter(
@@ -79,6 +91,7 @@ const DetailPage = () => {
     });
   };
 
+  // Handle checkout process
   const onCheckout = async (userFormData: UserFormData) => {
     if (!restaurant) {
       return;
@@ -104,10 +117,12 @@ const DetailPage = () => {
     window.location.href = data.url;
   };
 
+  // Render loading message while data is being fetched
   if (isLoading || !restaurant) {
     return "Loading...";
   }
 
+  // Render restaurant details, menu items, order summary, and checkout button 
   return (
     <div className="flex flex-col gap-10">
       <AspectRatio ratio={16 / 5}>

@@ -7,6 +7,9 @@ import Auth0ProviderWithNavigate from './auth/Auth0ProviderWithNavigate'
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Toaster } from 'sonner'
 
+
+// Create a new instance of QueryClient with custom default options.
+// Here, refetchOnWindowFocus is set to false, meaning queries won't automatically refetch when the window gains focus.
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {

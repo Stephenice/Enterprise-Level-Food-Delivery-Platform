@@ -3,9 +3,20 @@ import appDownloadImage from "../assets/appDownload.png";
 import SearchBar, { SearchForm } from "@/components/SearchBar";
 import { useNavigate } from "react-router-dom";
 
+
+/**
+ * HomePage component represents the landing page of the application.
+ * It displays a welcome message, a search bar for searching by city or town,
+ * and information about downloading the MernEats App for faster ordering and
+ * personalized recommendations.
+ * 
+ * @returns {JSX.Element} JSX representing the home page.
+ */
+
 const HomePage = () => {
   const navigate = useNavigate();
 
+  // Function to handle search form submission
   const handleSearchSubmit = (searchFormValues: SearchForm) => {
     navigate({
       pathname: `/search/${searchFormValues.searchQuery}`,
