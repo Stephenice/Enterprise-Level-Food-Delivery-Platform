@@ -11,7 +11,19 @@ type Props = {
   removeFromCart: (cartItem: CartItem) => void;
 };
 
+/**
+ * OrderSummary component displays the summary of the order, including the list of items in the cart, their quantities, prices, and delivery cost.
+ * 
+ * @component
+ * @param {Props} props - Props for OrderSummary component.
+ * @returns {JSX.Element} - JSX element representing the OrderSummary component.
+ */
 const OrderSummary = ({ restaurant, cartItems, removeFromCart }: Props) => {
+
+  /**
+   * Calculates the total cost of the order including items and delivery cost.
+   * @returns {string} - Total cost of the order formatted as a string with 2 decimal places.
+   */
   const getTotalCost = () => {
     const totalInPence = cartItems.reduce(
       (total, cartItem) => total + cartItem.price * cartItem.quantity,

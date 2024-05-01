@@ -2,9 +2,12 @@ import { Link } from "react-router-dom";
 import MobileNav from "./MobileNav";
 import MainNav from "./MainNav";
 import logo from "../assets/images.png";
-// import './Header.css';
 
-
+/**
+ * Header component displays the header section of the website.
+ * 
+ * @returns {JSX.Element} - JSX element representing the Header component.
+ */
 const Header = () => {
   return (
     <div className="border-b-2 border-b-orange-500 py-6">

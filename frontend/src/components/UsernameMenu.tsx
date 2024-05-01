@@ -10,6 +10,13 @@ import { Link } from "react-router-dom";
 import { Separator } from "./ui/separator";
 import { Button } from "./ui/button";
 
+
+/**
+ * UsernameMenu component displays a dropdown menu with user options.
+ * 
+ * @component
+ * @returns {JSX.Element} - JSX element representing the UsernameMenu component.
+ */
 const UsernameMenu = () => {
   const { user, logout } = useAuth0();
 

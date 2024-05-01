@@ -11,6 +11,11 @@ import { Button } from "./ui/button";
 import { useAuth0 } from "@auth0/auth0-react";
 import MobileNavLinks from "./MobileNavLinks";
 
+/**
+ * MobileNav component represents the mobile navigation menu.
+ * 
+ * @returns {JSX.Element} - JSX element representing the MobileNav component.
+ */
 const MobileNav = () => {
   const { isAuthenticated, loginWithRedirect, user } = useAuth0();
 

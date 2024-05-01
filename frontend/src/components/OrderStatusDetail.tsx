@@ -5,6 +5,13 @@ type Props = {
   order: Order;
 };
 
+/**
+ * OrderStatusDetail component displays detailed information about a specific order.
+ * 
+ * @component
+ * @param {Props} props - Props for OrderStatusDetail component.
+ * @returns {JSX.Element} - JSX element representing the OrderStatusDetail component.
+ */
 const OrderStatusDetail = ({ order }: Props) => {
   console.log(order.totalAmount )
   return (

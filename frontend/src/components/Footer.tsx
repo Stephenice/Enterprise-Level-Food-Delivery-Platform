@@ -1,3 +1,8 @@
+/**
+ * Footer component displays the footer section of the website.
+ * 
+ * @returns {JSX.Element} - JSX element representing the Footer component.
+ */
 const Footer = () => {
   return (
     <div className="bg-orange-500 py-10">

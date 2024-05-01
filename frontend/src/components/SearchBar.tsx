@@ -22,6 +22,13 @@ type Props = {
   searchQuery?: string;
 };
 
+/**
+ * SearchBar component provides a search input field.
+ * 
+ * @component
+ * @param {Props} props - Props for SearchBar component.
+ * @returns {JSX.Element} - JSX element representing the SearchBar component.
+ */
 const SearchBar = ({ onSubmit, onReset, placeHolder, searchQuery }: Props) => {
   const form = useForm<SearchForm>({
     resolver: zodResolver(formSchema),

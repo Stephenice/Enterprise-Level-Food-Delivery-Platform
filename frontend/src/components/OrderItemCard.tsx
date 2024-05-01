@@ -18,6 +18,13 @@ type Props = {
   order: Order;
 };
 
+/**
+ * OrderItemCard component displays information about a particular order and allows restaurant staff to update its status.
+ * 
+ * @component
+ * @param {Props} props - Props for OrderItemCard component.
+ * @returns {JSX.Element} - JSX element representing the OrderItemCard component.
+ */
 const OrderItemCard = ({ order }: Props) => {
   const { updateRestaurantStatus, isLoading } = useUpdateMyRestaurantOrder();
   const [status, setStatus] = useState<OrderStatus>(order.status);
@@ -26,6 +33,12 @@ const OrderItemCard = ({ order }: Props) => {
     setStatus(order.status);
   }, [order.status]);
 
+
+  /**
+   * Handles the change of order status.
+   * 
+   * @param {OrderStatus} newStatus - New status value.
+   */
   const handleStatusChange = async (newStatus: OrderStatus) => {
     await updateRestaurantStatus({
       orderId: order._id as string,
@@ -34,6 +47,11 @@ const OrderItemCard = ({ order }: Props) => {
     setStatus(newStatus);
   };
 
+    /**
+   * Gets the time of the order.
+   * 
+   * @returns {string} - Time of the order.
+   */
   const getTime = () => {
     const orderDateTime = new Date(order.createdAt);
 

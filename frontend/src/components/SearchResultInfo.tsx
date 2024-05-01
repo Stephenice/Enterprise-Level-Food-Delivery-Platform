@@ -5,6 +5,13 @@ type Props = {
   city: string;
 };
 
+/**
+ * SearchResultInfo component displays information about the search result.
+ * 
+ * @component
+ * @param {Props} props - Props for SearchResultInfo component.
+ * @returns {JSX.Element} - JSX element representing the SearchResultInfo component.
+ */
 const SearchResultInfo = ({ total, city }: Props) => {
   return (
     <div className="text-xl font-bold flex flex-col gap-3 justify-between lg:items-center lg:flex-row">

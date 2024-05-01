@@ -5,9 +5,19 @@ import { toast } from "sonner";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
+/**
+ * useGetMyOrders hook fetches the current user's orders.
+ * It sends a GET request to the API endpoint '/api/order' with the user's access token.
+ * 
+ * @returns {Object} - An object containing the fetched orders and loading state.
+ */
 export const useGetMyOrders = () => {
   const { getAccessTokenSilently } = useAuth0();
 
+  /**
+   * Function to send a GET request to fetch the current user's orders.
+   * @returns {Promise<Order[]>} - A promise that resolves to an array of orders.
+   */
   const getMyOrdersRequest = async (): Promise<Order[]> => {
     const accessToken = await getAccessTokenSilently();
 
@@ -24,6 +34,7 @@ export const useGetMyOrders = () => {
     return response.json();
   };
 
+  // Use useQuery hook to fetch orders data and manage loading state with automatic refetching every 5 seconds
   const { data: orders, isLoading } = useQuery(
     "fetchMyOrders",
     getMyOrdersRequest,
@@ -51,9 +62,19 @@ type CheckoutSessionRequest = {
   restaurantId: string;
 };
 
+/**
+ * useCreateCheckoutSession hook creates a new checkout session for an order.
+ * It sends a POST request to the API endpoint '/api/order/checkout/create-checkout-session' with the user's access token and checkout session data.
+ * 
+ * @returns {Object} - An object containing the function to create a checkout session, and loading and error states.
+ */
 export const useCreateCheckoutSession = () => {
   const { getAccessTokenSilently } = useAuth0();
 
+  /**
+   * Function to send a POST request to create a new checkout session.
+   * @param {CheckoutSessionRequest} checkoutSessionRequest - Data for creating a checkout session.
+   */
   const createCheckoutSessionRequest = async (
     checkoutSessionRequest: CheckoutSessionRequest
   ) => {
@@ -78,6 +99,7 @@ export const useCreateCheckoutSession = () => {
     return response.json();
   };
 
+  // Use useMutation hook to create checkout session and manage loading, error, and success states
   const {
     mutateAsync: createCheckoutSession,
     isLoading,
@@ -85,6 +107,7 @@ export const useCreateCheckoutSession = () => {
     reset,
   } = useMutation(createCheckoutSessionRequest);
 
+  // Show error toast if creating checkout session fails
   if (error) {
     toast.error(error.toString());
     reset();

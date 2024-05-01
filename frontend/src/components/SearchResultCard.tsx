@@ -7,6 +7,13 @@ type Props = {
   restaurant: Restaurant;
 };
 
+/**
+ * SearchResultCard component represents a card for displaying search results.
+ * 
+ * @component
+ * @param {Props} props - Props for SearchResultCard component.
+ * @returns {JSX.Element} - JSX element representing the SearchResultCard component.
+ */
 const SearchResultCard = ({ restaurant }: Props) => {
   return (
     <Link

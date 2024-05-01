@@ -26,6 +26,13 @@ const SORT_OPTIONS = [
   },
 ];
 
+/**
+ * SortOptionDropdown component provides a dropdown menu to select sorting options.
+ * 
+ * @component
+ * @param {Props} props - Props for SortOptionDropdown component.
+ * @returns {JSX.Element} - JSX element representing the SortOptionDropdown component.
+ */
 const SortOptionDropdown = ({ onChange, sortOption }: Props) => {
   const selectedSortLabel =
     SORT_OPTIONS.find((option) => option.value === sortOption)?.label ||

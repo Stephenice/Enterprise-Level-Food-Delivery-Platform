@@ -6,6 +6,14 @@ type Props = {
   addToCart: () => void;
 };
 
+/**
+ * MenuItem component represents a single menu item in a card format.
+ * 
+ * @param {object} props - The properties passed to the MenuItem component.
+ * @param {MenuItemType} props.menuItem - The menu item object containing name and price.
+ * @param {Function} props.addToCart - The function to add the item to the cart.
+ * @returns {JSX.Element} - JSX element representing the MenuItem component.
+ */
 const MenuItem = ({ menuItem, addToCart }: Props) => {
   return (
     <Card className="cursor-pointer" onClick={addToCart}>

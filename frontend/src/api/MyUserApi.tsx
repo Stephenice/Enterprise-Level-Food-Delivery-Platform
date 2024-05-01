@@ -5,9 +5,20 @@ import { toast } from "sonner";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
+/**
+ * useGetMyUser hook fetches the current user's profile data.
+ * It sends a GET request to the API endpoint '/api/my/user' with the user's access token.
+ * 
+ * @returns {Object} - An object containing the fetched user data and loading state.
+ */
 export const useGetMyUser = () => {
   const { getAccessTokenSilently } = useAuth0();
 
+
+   /**
+   * Function to send a GET request to fetch the current user's profile data.
+   * @returns {Promise<User>} - A promise that resolves to the fetched user data.
+   */
   const getMyUserRequest = async (): Promise<User> => {
     const accessToken = await getAccessTokenSilently();
 
@@ -26,6 +37,8 @@ export const useGetMyUser = () => {
     return response.json();
   };
 
+
+  // Use useQuery hook to fetch user data and manage loading and error states
   const {
     data: currentUser,
     isLoading,
@@ -44,9 +57,20 @@ type CreateUserRequest = {
   email: string;
 };
 
+
+/**
+ * useCreateMyUser hook creates a new user profile.
+ * It sends a POST request to the API endpoint '/api/my/user' with the user's access token and user data.
+ * 
+ * @returns {Object} - An object containing the function to create a user profile, loading state, error state, and success state.
+ */
 export const useCreateMyUser = () => {
   const { getAccessTokenSilently } = useAuth0();
 
+  /**
+   * Function to send a POST request to create a new user profile.
+   * @param {CreateUserRequest} user - Data of the user to be created.
+   */
   const createMyUserRequest = async (user: CreateUserRequest) => {
     const accessToken = await getAccessTokenSilently();
     const response = await fetch(`${API_BASE_URL}/api/my/user`, {
@@ -63,6 +87,7 @@ export const useCreateMyUser = () => {
     }
   };
 
+  // Use useMutation hook to create user and manage loading, error, and success states
   const {
     mutateAsync: createUser,
     isLoading,
@@ -85,9 +110,21 @@ type UpdateMyUserRequest = {
   country: string;
 };
 
+
+/**
+ * useUpdateMyUser hook updates the current user's profile data.
+ * It sends a PUT request to the API endpoint '/api/my/user' with the user's access token and updated user data.
+ * 
+ * @returns {Object} - An object containing the function to update user profile data, loading state, and error state.
+ */
 export const useUpdateMyUser = () => {
   const { getAccessTokenSilently } = useAuth0();
 
+
+  /**
+   * Function to send a PUT request to update user profile data.
+   * @param {UpdateMyUserRequest} formData - Updated data of the user profile.
+   */
   const updateMyUserRequest = async (formData: UpdateMyUserRequest) => {
     const accessToken = await getAccessTokenSilently();
 
@@ -107,6 +144,7 @@ export const useUpdateMyUser = () => {
     return response.json();
   };
 
+  // Use useMutation hook to update user profile and manage loading, success, and error states
   const {
     mutateAsync: updateUser,
     isLoading,
@@ -115,10 +153,12 @@ export const useUpdateMyUser = () => {
     reset,
   } = useMutation(updateMyUserRequest);
 
+  // Show success toast if update is successful
   if (isSuccess) {
     toast.success("User profile updated!");
   }
 
+  // Show error toast if update fails
   if (error) {
     toast.error(error.toString());
     reset();

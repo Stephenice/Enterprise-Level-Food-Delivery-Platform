@@ -11,12 +11,27 @@ type Props = {
   onExpandedClick: () => void;
 };
 
+/**
+ * CuisineFilter component displays a list of cuisines for filtering restaurants.
+ * 
+ * @param {Props} props - The props for the CuisineFilter component.
+ * @param {Function} props.onChange - Function to handle changes in selected cuisines.
+ * @param {string[]} props.selectedCuisines - Array containing selected cuisines.
+ * @param {boolean} props.isExpanded - Indicates whether the cuisine list is expanded.
+ * @param {Function} props.onExpandedClick - Function to handle expanding or collapsing the cuisine list.
+ * @returns {JSX.Element} - JSX element representing the CuisineFilter component.
+ */
 const CuisineFilter = ({
   onChange,
   selectedCuisines,
   isExpanded,
   onExpandedClick,
 }: Props) => {
+
+  /**
+   * Handles the change in selected cuisines when a checkbox is clicked.
+   * @param {ChangeEvent<HTMLInputElement>} event - The change event triggered by clicking a checkbox.
+   */
   const handleCuisinesChange = (event: ChangeEvent<HTMLInputElement>) => {
     const clickedCuisine = event.target.value;
     const isChecked = event.target.checked;
@@ -28,6 +43,9 @@ const CuisineFilter = ({
     onChange(newCuisinesList);
   };
 
+  /**
+  * Resets the selected cuisines list.
+  */
   const handleCuisinesReset = () => onChange([]);
 
   return (

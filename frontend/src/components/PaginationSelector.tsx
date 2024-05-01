@@ -13,6 +13,13 @@ type Props = {
   onPageChange: (page: number) => void;
 };
 
+/**
+ * PaginationSelector component displays pagination controls allowing users to navigate through multiple pages of content.
+ * 
+ * @component
+ * @param {Props} props - Props for PaginationSelector component.
+ * @returns {JSX.Element} - JSX element representing the PaginationSelector component.
+ */
 const PaginationSelector = ({ page, pages, onPageChange }: Props) => {
   const pageNumbers = [];
   for (let i = 1; i <= pages; i++) {

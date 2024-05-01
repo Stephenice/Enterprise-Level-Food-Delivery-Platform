@@ -3,6 +3,11 @@ import { Button } from "./ui/button";
 import UsernameMenu from "./UsernameMenu";
 import { Link } from "react-router-dom";
 
+/**
+ * MainNav component renders the main navigation links in the header.
+ * 
+ * @returns {JSX.Element} - JSX element representing the MainNav component.
+ */
 const MainNav = () => {
   const { loginWithRedirect, isAuthenticated } = useAuth0();
 
